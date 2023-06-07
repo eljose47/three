@@ -1,13 +1,16 @@
 import * as React from "react";
 import { styled } from "styled-components";
-
-const canvas = styled.canvas`
-  height: 100%;
-  width: 100%;
-`;
+import { cleanup, init } from "./scene";
 
 const Main: React.FunctionComponent<MainProps> = (props) => {
-  return <canvas></canvas>;
+  // const ref = React.useRef<HTMLDivElement>(null)
+  React.useEffect(() => {
+    init(document.body);
+
+    return () => cleanup(document.body);
+  });
+
+  return <></>;
 };
 
 Main.displayName = "Main";
